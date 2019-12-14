@@ -1,38 +1,50 @@
 package com.anna;
 
-import com.anna.menu.*;
-import com.anna.tourism.*;
-import com.anna.transport.*;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
-
     public static void main(String[] args) throws Exception {
-        Voucher voucher1 = new Voucher(
-                new SimpleDateFormat("dd/MM/yyyy").parse("20/09/2019"),
-                new SimpleDateFormat("dd/MM/yyyy").parse("30/09/2019"),
-                new AllIncludedMenu(),
-                new Treatment(),
-                new Car()
-        );
+        List<Voucher> vouchers = VoucherFactory.loadVouchers();
+        boolean exit = false;
+        Scanner scanner = new Scanner(System.in);
 
-        Voucher voucher2 = new Voucher(
-                new SimpleDateFormat("dd/MM/yyyy").parse("10/02/2019"),
-                new SimpleDateFormat("dd/MM/yyyy").parse("24/02/2019"),
-                new BreakfastMenu(),
-                new Shopping(),
-                new Bus()
-        );
+        while(!exit) {
+            System.out.println("Choose an action!");
+            System.out.println("1. Print All");
+            System.out.println("2. Sort by start date");
+            System.out.println("3. Exit");
 
-        List<Voucher> vouchers = new ArrayList<Voucher>();
-        vouchers.add(voucher1);
-        vouchers.add(voucher2);
+            if(scanner.hasNext()) {
+                String input = scanner.next();
 
-        for (Voucher voucher:vouchers) {
-            System.out.println(voucher);
+                switch (input) {
+                    case "1": {
+                        for(Voucher voucher: vouchers) {
+                            System.out.println(voucher);
+                        }
+                        break;
+                    }
+                    case "2": {
+                        List<Voucher> sortedVouchers = vouchers.stream()
+                                .sorted(Comparator.comparing(Voucher::getStartDate))
+                                .collect(Collectors.toList());
+                        for(Voucher voucher: sortedVouchers) {
+                            System.out.println(voucher);
+                        }
+                        break;
+                    }
+                    case "3": {
+                        exit = true;
+                        System.out.println("Good bye!");
+                        break;
+                    }
+                    default:
+                        System.out.println("Invalid operation");
+                }
+            }
         }
     }
 }
