@@ -1,50 +1,71 @@
 package com.anna;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import com.anna.commands.BaseCommand;
+import com.anna.commands.FilterCommand;
+import com.anna.commands.SortCommand;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         List<Voucher> vouchers = VoucherFactory.loadVouchers();
         boolean exit = false;
-        Scanner scanner = new Scanner(System.in);
+        ApplicationMenu applicationMenu = new ApplicationMenu();
+        BaseCommand command;
 
         while(!exit) {
-            System.out.println("Choose an action!");
-            System.out.println("1. Print All");
-            System.out.println("2. Sort by start date");
-            System.out.println("3. Exit");
+            command = applicationMenu.readCommand();
+            switch (command.getType()) {
+                case EXIT:
+                    exit = true;
 
-            if(scanner.hasNext()) {
-                String input = scanner.next();
-
-                switch (input) {
-                    case "1": {
-                        for(Voucher voucher: vouchers) {
-                            System.out.println(voucher);
-                        }
-                        break;
+                    System.out.println("Good bye!");
+                    break;
+                case SHOW_ALL: {
+                    for (Voucher voucher: vouchers) {
+                        System.out.println(voucher);
                     }
-                    case "2": {
-                        List<Voucher> sortedVouchers = vouchers.stream()
-                                .sorted(Comparator.comparing(Voucher::getStartDate))
-                                .collect(Collectors.toList());
-                        for(Voucher voucher: sortedVouchers) {
-                            System.out.println(voucher);
-                        }
-                        break;
+                    break;
+                }
+                case FILTER: {
+                    List<Voucher> filteredVouchers = filterVouchers(vouchers, (FilterCommand)command);
+                    for (Voucher voucher: filteredVouchers) {
+                        System.out.println(voucher);
                     }
-                    case "3": {
-                        exit = true;
-                        System.out.println("Good bye!");
-                        break;
+                    break;
+                }
+                case SORT: {
+                    List<Voucher> sortedVouchers = sortVouchers(vouchers, (SortCommand) command);
+                    for (Voucher voucher: sortedVouchers) {
+                        System.out.println(voucher);
                     }
-                    default:
-                        System.out.println("Invalid operation");
+                    break;
                 }
             }
         }
     }
+
+    private static List<Voucher> filterVouchers(List<Voucher> vouchers, FilterCommand filterCommand) {
+        List<Voucher> filteredVouchers = vouchers.stream().filter((voucher) -> {
+            boolean menuType = filterCommand.getMenuType() == null || filterCommand.getMenuType() == voucher.getMenu().getType();
+            boolean transportType = filterCommand.getTransportType() == null || filterCommand.getTransportType() == voucher.getTransport().getType();
+            boolean tourismType = filterCommand.getTourismType() == null || filterCommand.getTourismType() == voucher.getTourism().getType();
+            boolean startDate = filterCommand.getStartDate() == null || filterCommand.getStartDate().after(voucher.getStartDate());
+            boolean endDate = filterCommand.getEndDate() == null || filterCommand.getEndDate().before(voucher.getEndDate());
+            boolean country = filterCommand.getCountry() == null || filterCommand.getCountry().equals(voucher.getCountry());
+
+            return menuType && transportType && tourismType && startDate && endDate && country;
+        }).collect(Collectors.toList());
+
+        return filteredVouchers;
+    };
+
+    private static List<Voucher> sortVouchers(List<Voucher> vouchers, SortCommand sortCommand) {
+        Comparator comparator = Comparator.comparing((sortCommand.getSortBy().equals("startDate")) ? Voucher::getStartDate : Voucher::getEndDate);
+        if (sortCommand.getSortOrder().equals("DESC")) {
+            comparator = comparator.reversed();
+        }
+        return (List<Voucher>) vouchers.stream().sorted(comparator).collect(Collectors.toList());
+    };
 }

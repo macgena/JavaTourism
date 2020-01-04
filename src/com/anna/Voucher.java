@@ -12,13 +12,15 @@ public class Voucher {
     private BaseMenu menu;
     private BaseTourism tourism;
     private BaseTransport transport;
+    private String country;
 
-    public Voucher(Date startDate, Date endDate, BaseMenu menu, BaseTourism tourism, BaseTransport transport) {
+    public Voucher(Date startDate, Date endDate, BaseMenu menu, BaseTourism tourism, BaseTransport transport, String country) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.menu = menu;
         this.tourism = tourism;
         this.transport = transport;
+        this.country = country;
     }
 
     public Date getStartDate() {
@@ -61,9 +63,17 @@ public class Voucher {
         this.transport = transport;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     @Override
     public String toString() {
-        return "Start Date: " + startDate + "\n" + "End Date: " + endDate + "\n" +
+        return "Country: " + country + "\n" + "Start Date: " + startDate + "\n" + "End Date: " + endDate + "\n" +
                 "Menu: " + menu + "\n" + "Tourism: " + tourism + "\n" + "Transport: " + transport + "\n";
     }
 }

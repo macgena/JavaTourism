@@ -13,51 +13,59 @@ import java.util.List;
 
 public class VoucherFactory {
     public static List<Voucher> loadVouchers() throws Exception {
+        final SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+
         Voucher voucher1 = new Voucher(
-                new SimpleDateFormat("dd/MM/yyyy").parse("20/09/2019"),
-                new SimpleDateFormat("dd/MM/yyyy").parse("30/09/2019"),
+                dateFormatter.parse("20/09/2019"),
+                dateFormatter.parse("30/09/2019"),
                 new AllIncludedMenu(1700.0),
                 new Treatment(),
-                new Car()
+                new Car(),
+                "Turckey"
         );
         Voucher voucher2 = new Voucher(
-                new SimpleDateFormat("dd/MM/yyyy").parse("10/02/2019"),
-                new SimpleDateFormat("dd/MM/yyyy").parse("24/02/2019"),
+                dateFormatter.parse("10/02/2019"),
+                dateFormatter.parse("24/02/2019"),
                 new BreakfastMenu(500.0),
                 new Shopping(),
-                new Bus()
+                new Bus(),
+                "Maldives"
         );
 
         Voucher voucher3 = new Voucher(
-                new SimpleDateFormat("dd/MM/yyyy").parse("11/12/2019"),
-                new SimpleDateFormat("dd/MM/yyyy").parse("19/12/2019"),
+                dateFormatter.parse("11/12/2019"),
+                dateFormatter.parse("19/12/2019"),
                 new AllIncludedMenu(1700.0),
                 new Treatment(),
-                new Car()
+                new Car(),
+                "Japan"
         );
 
         Voucher voucher4 = new Voucher(
-                new SimpleDateFormat("dd/MM/yyyy").parse("13/03/2020"),
-                new SimpleDateFormat("dd/MM/yyyy").parse("27/03/2020"),
+                dateFormatter.parse("13/03/2020"),
+                dateFormatter.parse("27/03/2020"),
                 new BreakfastMenu(500.0),
                 new Shopping(),
-                new Bus()
+                new Bus(),
+                "South Korea"
         );
 
         Voucher voucher5 = new Voucher(
-                new SimpleDateFormat("dd/MM/yyyy").parse("23/06/2019"),
-                new SimpleDateFormat("dd/MM/yyyy").parse("31/06/2019"),
+                dateFormatter.parse("23/06/2019"),
+                dateFormatter.parse("31/06/2019"),
                 new AllIncludedMenu(1700.0),
                 new Treatment(),
-                new Car()
+                new Car(),
+                "Belarus"
         );
 
         Voucher voucher6 = new Voucher(
-                new SimpleDateFormat("dd/MM/yyyy").parse("28/05/2019"),
-                new SimpleDateFormat("dd/MM/yyyy").parse("10/06/2019"),
+                dateFormatter.parse("28/05/2019"),
+                dateFormatter.parse("10/06/2019"),
                 new BreakfastMenu(500.0),
                 new Shopping(),
-                new Bus()
+                new Bus(),
+                "Poland"
         );
 
         List<Voucher> vouchers = new ArrayList<>();
