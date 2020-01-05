@@ -21,7 +21,7 @@ public class VoucherFactory {
                 new AllIncludedMenu(1700.0),
                 new Treatment(),
                 new Car(),
-                "Turckey"
+                "Turkey"
         );
         Voucher voucher2 = new Voucher(
                 dateFormatter.parse("10/02/2019"),
