@@ -1,10 +1,12 @@
 package com.anna;
 
 import com.anna.commands.*;
+import com.anna.exceptions.InvalidCountryException;
 import com.anna.exceptions.InvalidIntCommandException;
 import com.anna.menu.MenuType;
 import com.anna.tourism.TourismType;
 import com.anna.transport.TransportType;
+import com.anna.validators.CountryValidator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -56,9 +58,7 @@ public class ApplicationMenu {
         action = readIntCommand(new String[]{"Skip selection", "Enter country"});
 
         if (action == 1) {
-            if (scanner.hasNext()) {
-                country = scanner.next();
-            }
+            country = readCountry();
         }
 
         System.out.println("Choose menu type: ");
@@ -173,6 +173,24 @@ public class ApplicationMenu {
         }
 
         return result;
+    }
+
+    private String readCountry() {
+        boolean parsed = false;
+        String country = null;
+
+        while (!parsed) {
+            System.out.println("Write your country: ");
+            if (scanner.hasNext()) {
+                try {
+                    country = CountryValidator.validateCountry(scanner.next());
+                    parsed = true;
+                } catch (InvalidCountryException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        return country;
     }
 
     private SortCommand buildSortByCommand() {
