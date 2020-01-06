@@ -7,25 +7,26 @@ import com.anna.tourism.Treatment;
 import com.anna.transport.Bus;
 import com.anna.transport.Car;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class VoucherFactory {
-    public static List<Voucher> loadVouchers() throws Exception {
+    public static ArrayList<Voucher> loadVouchers() {
         final SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
 
         Voucher voucher1 = new Voucher(
-                dateFormatter.parse("20/09/2019"),
-                dateFormatter.parse("30/09/2019"),
+                parseDate(dateFormatter, "20/09/2019"),
+                parseDate(dateFormatter, "30/09/2019"),
                 new AllIncludedMenu(1700.0),
                 new Treatment(),
                 new Car(),
                 "Turkey"
         );
         Voucher voucher2 = new Voucher(
-                dateFormatter.parse("10/02/2019"),
-                dateFormatter.parse("24/02/2019"),
+                parseDate(dateFormatter, "10/02/2019"),
+                parseDate(dateFormatter, "24/02/2019"),
                 new BreakfastMenu(500.0),
                 new Shopping(),
                 new Bus(),
@@ -33,8 +34,8 @@ public class VoucherFactory {
         );
 
         Voucher voucher3 = new Voucher(
-                dateFormatter.parse("11/12/2019"),
-                dateFormatter.parse("19/12/2019"),
+                parseDate(dateFormatter, "11/12/2019"),
+                parseDate(dateFormatter, "19/12/2019"),
                 new AllIncludedMenu(1700.0),
                 new Treatment(),
                 new Car(),
@@ -42,8 +43,8 @@ public class VoucherFactory {
         );
 
         Voucher voucher4 = new Voucher(
-                dateFormatter.parse("13/03/2020"),
-                dateFormatter.parse("27/03/2020"),
+                parseDate(dateFormatter, "13/03/2020"),
+                parseDate(dateFormatter, "27/03/2020"),
                 new BreakfastMenu(500.0),
                 new Shopping(),
                 new Bus(),
@@ -51,8 +52,8 @@ public class VoucherFactory {
         );
 
         Voucher voucher5 = new Voucher(
-                dateFormatter.parse("23/06/2019"),
-                dateFormatter.parse("31/06/2019"),
+                parseDate(dateFormatter, "23/06/2019"),
+                parseDate(dateFormatter, "31/06/2019"),
                 new AllIncludedMenu(1700.0),
                 new Treatment(),
                 new Car(),
@@ -60,15 +61,15 @@ public class VoucherFactory {
         );
 
         Voucher voucher6 = new Voucher(
-                dateFormatter.parse("28/05/2019"),
-                dateFormatter.parse("10/06/2019"),
+                parseDate(dateFormatter, "28/05/2019"),
+                parseDate(dateFormatter, "10/06/2019"),
                 new BreakfastMenu(500.0),
                 new Shopping(),
                 new Bus(),
                 "Poland"
         );
 
-        List<Voucher> vouchers = new ArrayList<>();
+        ArrayList<Voucher> vouchers = new ArrayList<>();
         vouchers.add(voucher1);
         vouchers.add(voucher2);
         vouchers.add(voucher3);
@@ -77,5 +78,16 @@ public class VoucherFactory {
         vouchers.add(voucher6);
 
         return vouchers;
+    }
+
+    private static Date parseDate(SimpleDateFormat dateFormatter, String dateString) {
+        Date result = null;
+        try {
+            result = dateFormatter.parse(dateString);
+        } catch (ParseException e) {
+            System.out.println("Invalid date passed");
+            e.printStackTrace();
+        }
+        return result;
     }
 }

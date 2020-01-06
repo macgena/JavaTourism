@@ -1,6 +1,8 @@
 package com.anna.transport;
 
-public abstract class BaseTransport {
+import java.io.Serializable;
+
+public abstract class BaseTransport implements Serializable {
   public abstract TransportType getType();
 
   @Override

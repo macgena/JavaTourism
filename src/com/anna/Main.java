@@ -4,12 +4,14 @@ import com.anna.commands.BaseCommand;
 import com.anna.commands.FilterCommand;
 import com.anna.commands.SortCommand;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
-        List<Voucher> vouchers = VoucherFactory.loadVouchers();
+    public static void main(String[] args) throws FileNotFoundException {
+        VoucherStorage voucherStorage = new VoucherStorage();
+        ArrayList<Voucher> vouchers = voucherStorage.readFromFile();
         boolean exit = false;
         ApplicationMenu applicationMenu = new ApplicationMenu();
         BaseCommand command;

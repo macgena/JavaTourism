@@ -1,6 +1,8 @@
 package com.anna.menu;
 
-public abstract class BaseMenu {
+import java.io.Serializable;
+
+public abstract class BaseMenu implements Serializable {
     private double calories;
 
     BaseMenu(double calories) {

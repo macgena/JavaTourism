@@ -1,6 +1,8 @@
 package com.anna.tourism;
 
-public abstract class BaseTourism {
+import java.io.Serializable;
+
+public abstract class BaseTourism implements Serializable {
     public abstract TourismType getType();
 
     @Override

@@ -4,9 +4,10 @@ import com.anna.menu.BaseMenu;
 import com.anna.tourism.BaseTourism;
 import com.anna.transport.BaseTransport;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Voucher {
+public class Voucher implements Serializable {
     private Date startDate;
     private Date endDate;
     private BaseMenu menu;
