@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_191" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="com.anna.Voucher">
+    <void property="country">
+     <string>Turkey</string>
+    </void>
+    <void property="endDate">
+     <object class="java.util.Date">
+      <long>1569790800000</long>
+     </object>
+    </void>
+    <void property="menu">
+     <object class="com.anna.menu.AllIncludedMenu">
+      <void property="calories">
+       <double>1700.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="startDate">
+     <object class="java.util.Date">
+      <long>1568926800000</long>
+     </object>
+    </void>
+    <void property="tourism">
+     <object class="com.anna.tourism.Treatment"/>
+    </void>
+    <void property="transport">
+     <object class="com.anna.transport.Car"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.anna.Voucher">
+    <void property="country">
+     <string>Maldives</string>
+    </void>
+    <void property="endDate">
+     <object class="java.util.Date">
+      <long>1550955600000</long>
+     </object>
+    </void>
+    <void property="menu">
+     <object class="com.anna.menu.BreakfastMenu">
+      <void property="calories">
+       <double>500.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="startDate">
+     <object class="java.util.Date">
+      <long>1549746000000</long>
+     </object>
+    </void>
+    <void property="tourism">
+     <object class="com.anna.tourism.Shopping"/>
+    </void>
+    <void property="transport">
+     <object class="com.anna.transport.Bus"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.anna.Voucher">
+    <void property="country">
+     <string>Japan</string>
+    </void>
+    <void property="endDate">
+     <object class="java.util.Date">
+      <long>1576702800000</long>
+     </object>
+    </void>
+    <void property="menu">
+     <object class="com.anna.menu.AllIncludedMenu">
+      <void property="calories">
+       <double>1700.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="startDate">
+     <object class="java.util.Date">
+      <long>1576011600000</long>
+     </object>
+    </void>
+    <void property="tourism">
+     <object class="com.anna.tourism.Treatment"/>
+    </void>
+    <void property="transport">
+     <object class="com.anna.transport.Car"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.anna.Voucher">
+    <void property="country">
+     <string>South Korea</string>
+    </void>
+    <void property="endDate">
+     <object class="java.util.Date">
+      <long>1585256400000</long>
+     </object>
+    </void>
+    <void property="menu">
+     <object class="com.anna.menu.BreakfastMenu">
+      <void property="calories">
+       <double>500.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="startDate">
+     <object class="java.util.Date">
+      <long>1584046800000</long>
+     </object>
+    </void>
+    <void property="tourism">
+     <object class="com.anna.tourism.Shopping"/>
+    </void>
+    <void property="transport">
+     <object class="com.anna.transport.Bus"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.anna.Voucher">
+    <void property="country">
+     <string>Belarus</string>
+    </void>
+    <void property="endDate">
+     <object class="java.util.Date">
+      <long>1561928400000</long>
+     </object>
+    </void>
+    <void property="menu">
+     <object class="com.anna.menu.AllIncludedMenu">
+      <void property="calories">
+       <double>1700.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="startDate">
+     <object class="java.util.Date">
+      <long>1561237200000</long>
+     </object>
+    </void>
+    <void property="tourism">
+     <object class="com.anna.tourism.Treatment"/>
+    </void>
+    <void property="transport">
+     <object class="com.anna.transport.Car"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.anna.Voucher">
+    <void property="country">
+     <string>Poland</string>
+    </void>
+    <void property="endDate">
+     <object class="java.util.Date">
+      <long>1560114000000</long>
+     </object>
+    </void>
+    <void property="menu">
+     <object class="com.anna.menu.BreakfastMenu">
+      <void property="calories">
+       <double>500.0</double>
+      </void>
+     </object>
+    </void>
+    <void property="startDate">
+     <object class="java.util.Date">
+      <long>1558990800000</long>
+     </object>
+    </void>
+    <void property="tourism">
+     <object class="com.anna.tourism.Shopping"/>
+    </void>
+    <void property="transport">
+     <object class="com.anna.transport.Bus"/>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

@@ -15,6 +15,9 @@ public class Voucher implements Serializable {
     private BaseTransport transport;
     private String country;
 
+    public Voucher() {
+    };
+
     public Voucher(Date startDate, Date endDate, BaseMenu menu, BaseTourism tourism, BaseTransport transport, String country) {
         this.startDate = startDate;
         this.endDate = endDate;

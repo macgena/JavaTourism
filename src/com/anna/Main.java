@@ -3,6 +3,8 @@ package com.anna;
 import com.anna.commands.BaseCommand;
 import com.anna.commands.FilterCommand;
 import com.anna.commands.SortCommand;
+import com.anna.storage.DatabaseStorage;
+import com.anna.storage.XmlStorage;
 
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -11,9 +13,12 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         VoucherStorage voucherStorage = new VoucherStorage();
-        ArrayList<Voucher> vouchers = voucherStorage.readFromFile();
+        XmlStorage xmlStorage = new XmlStorage();
+        DatabaseStorage databaseStorage = new DatabaseStorage();
+        ArrayList<Voucher> vouchers = xmlStorage.readAll();
         boolean exit = false;
         ApplicationMenu applicationMenu = new ApplicationMenu();
+        databaseStorage.readAll();
         BaseCommand command;
 
         while(!exit) {

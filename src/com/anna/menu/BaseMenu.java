@@ -5,6 +5,8 @@ import java.io.Serializable;
 public abstract class BaseMenu implements Serializable {
     private double calories;
 
+    BaseMenu() {};
+
     BaseMenu(double calories) {
         this.calories = calories;
     }

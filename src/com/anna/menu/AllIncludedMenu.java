@@ -1,6 +1,8 @@
 package com.anna.menu;
 
 public class AllIncludedMenu extends BaseMenu {
+    public AllIncludedMenu() {}
+
     public AllIncludedMenu(double calories) {
         super(calories);
     }

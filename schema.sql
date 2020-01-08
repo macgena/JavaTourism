@@ -1,0 +1,33 @@
+CREATE DATABASE IF NOT EXISTS java_tourism;
+
+use java_tourism;
+
+CREATE TABLE IF NOT EXISTS transports (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(255) NOT NULL
+) ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS tourism (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(255) NOT NULL
+)ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS menu (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(255) NOT NULL,
+    calories FLOAT
+) ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS vouchers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    start_date DATETIME NOT NULL,
+    end_date DATETIME NOT NULL,
+    country VARCHAR(255) NOT NULL,
+    transport_id INT NOT NULL,
+    tourism_id INT NOT NULL,
+    menu_id INT NOT NULL,
+
+    FOREIGN KEY (transport_id) REFERENCES transports(id),
+    FOREIGN KEY (tourism_id) REFERENCES tourism(id),
+    FOREIGN KEY (menu_id) REFERENCES menu(id)
+) ENGINE=INNODB;
