@@ -20,8 +20,6 @@
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
-vouchers.data
-
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
