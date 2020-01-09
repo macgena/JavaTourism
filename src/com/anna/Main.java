@@ -15,10 +15,9 @@ public class Main {
         VoucherStorage voucherStorage = new VoucherStorage();
         XmlStorage xmlStorage = new XmlStorage();
         DatabaseStorage databaseStorage = new DatabaseStorage();
-        ArrayList<Voucher> vouchers = xmlStorage.readAll();
+        ArrayList<Voucher> vouchers = databaseStorage.readAll();
         boolean exit = false;
         ApplicationMenu applicationMenu = new ApplicationMenu();
-        databaseStorage.readAll();
         BaseCommand command;
 
         while(!exit) {
